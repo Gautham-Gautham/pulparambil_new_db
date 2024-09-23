@@ -46,32 +46,60 @@ class CommodityList extends ConsumerWidget {
                     ),
                     child: Row(
                       children: [
-                        space(w: SizeUtils.width * 0.01),
-                        Text(
-                          "COMMODITY",
-                          style: CustomPoppinsTextStyles.bodyText1White,
+                        SizedBox(
+                          width: SizeUtils.width / 4,
+                          child: Center(
+                            child: Text(
+                              "COMMODITY",
+                              style: GoogleFonts.poppins(
+                                  // fontFamily: marine,
+                                  color: appTheme.whiteA700,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 15.fSize),
+                            ),
+                          ),
                         ),
-                        Spacer(),
-                        Text(
-                          "UNIT",
-                          style: CustomPoppinsTextStyles.bodyText1White,
+                        SizedBox(
+                          width: SizeUtils.width / 5,
+                          child: Center(
+                            child: Text(
+                              "UNIT",
+                              style: GoogleFonts.poppins(
+                                  // fontFamily: marine,
+                                  color: appTheme.whiteA700,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 15.fSize),
+                            ),
+                          ),
                         ),
-                        Spacer(),
-                        // VerticalDivider(
-                        //   color: appTheme.gray700,
-                        // ),
-                        Text(
-                          "BUY\n(AED)",
-                          textAlign: TextAlign.center,
-                          style: CustomPoppinsTextStyles.bodyText1White,
+                        SizedBox(
+                          width: SizeUtils.width / 4,
+                          child: Center(
+                            child: Text(
+                              "BUY\n(AED)",
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.poppins(
+                                  // fontFamily: marine,
+                                  color: appTheme.whiteA700,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 15.fSize),
+                            ),
+                          ),
                         ),
-                        Spacer(),
-                        Text(
-                          "SELL\n(AED)",
-                          textAlign: TextAlign.center,
-                          style: CustomPoppinsTextStyles.bodyText1White,
+                        SizedBox(
+                          width: SizeUtils.width / 5,
+                          child: Center(
+                            child: Text(
+                              "SELL\n(AED)",
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.poppins(
+                                  // fontFamily: marine,
+                                  color: appTheme.whiteA700,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 15.fSize),
+                            ),
+                          ),
                         ),
-                        Spacer(),
                       ],
                     ),
                   ),
@@ -100,48 +128,43 @@ class CommodityList extends ConsumerWidget {
                                     ),
                                     child: Row(
                                       children: [
-                                        Spacer(),
-                                        RichText(
-                                            text: TextSpan(children: [
-                                          TextSpan(
-                                              text: commodities.metal
-                                                  .toUpperCase(),
-                                              style: CustomPoppinsTextStyles
-                                                  .bodyText1),
-                                          TextSpan(
-                                              text:
-                                                  commodities.purity.toString(),
-                                              style: GoogleFonts.poppins(
-                                                  // fontFamily: marine,
-                                                  color: appTheme.black900,
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 15.fSize))
-                                        ])),
-                                        // Text(
-                                        //   commodities.metal + commodities.purity,
-                                        //   style: CustomPoppinsTextStyles.bodyText1,
-                                        // ),
-                                        Spacer(),
-                                        Text(
-                                          commodities.unit.toString() +
-                                              commodities.weight,
-                                          style:
-                                              CustomPoppinsTextStyles.bodyText1,
+                                        SizedBox(
+                                          width: SizeUtils.width / 4,
+                                          child: Center(
+                                            child: RichText(
+                                                text: TextSpan(children: [
+                                              TextSpan(
+                                                  text: commodities.metal
+                                                      .toUpperCase(),
+                                                  style: CustomPoppinsTextStyles
+                                                      .bodyText1),
+                                              TextSpan(
+                                                  text: commodities.purity
+                                                      .toString(),
+                                                  style: GoogleFonts.poppins(
+                                                      // fontFamily: marine,
+                                                      color: appTheme.black900,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize: 15.fSize))
+                                            ])),
+                                          ),
                                         ),
-                                        Spacer(),
-                                        // VerticalDivider(
-                                        //   color: appTheme.gray700,
-                                        // ),
+                                        SizedBox(
+                                          width: SizeUtils.width / 5,
+                                          child: Center(
+                                            child: Text(
+                                              commodities.unit.toString() +
+                                                  commodities.weight,
+                                              style: CustomPoppinsTextStyles
+                                                  .bodyText1,
+                                            ),
+                                          ),
+                                        ),
                                         Consumer(
                                           builder: (context, refSell, child) {
                                             final askNow =
                                                 (price / 31.103) * 3.674;
-                                            // print(askNow);
-                                            // print("unit ${commodities.unit}");
-                                            // print(
-                                            //     "Multiplier ${getUnitMultiplier(commodities.weight)}");
-                                            // print(
-                                            //     "Purity${(double.parse(commodities.purity) / Math.pow(10, commodities.purity.length))}");
                                             final rateNow = askNow *
                                                 double.parse(commodities.unit
                                                     .toString()) *
@@ -154,24 +177,22 @@ class CommodityList extends ConsumerWidget {
                                                         commodities.purity
                                                             .toString()
                                                             .length));
-                                            return Text(
-                                              rateNow.toStringAsFixed(2),
-                                              style: CustomPoppinsTextStyles
-                                                  .bodyText1,
+                                            return SizedBox(
+                                              width: SizeUtils.width / 4,
+                                              child: Center(
+                                                child: Text(
+                                                  rateNow.toStringAsFixed(2),
+                                                  style: CustomPoppinsTextStyles
+                                                      .bodyText1,
+                                                ),
+                                              ),
                                             );
                                           },
                                         ),
-                                        Spacer(),
                                         Consumer(
                                           builder: (context, refSell, child) {
                                             final askNow =
                                                 (price / 31.103) * 3.674;
-                                            // print(askNow);
-                                            // print("unit ${commodities.unit}");
-                                            // print(
-                                            //     "Multiplier ${getUnitMultiplier(commodities.weight)}");
-                                            // print(
-                                            //     "Purity${(double.parse(commodities.purity) / Math.pow(10, commodities.purity.length))}");
                                             final rateNow = askNow *
                                                 double.parse(commodities.unit
                                                     .toString()) *
@@ -184,14 +205,18 @@ class CommodityList extends ConsumerWidget {
                                                         commodities.purity
                                                             .toString()
                                                             .length));
-                                            return Text(
-                                              rateNow.toStringAsFixed(2),
-                                              style: CustomPoppinsTextStyles
-                                                  .bodyText1,
+                                            return SizedBox(
+                                              width: SizeUtils.width / 5,
+                                              child: Center(
+                                                child: Text(
+                                                  rateNow.toStringAsFixed(2),
+                                                  style: CustomPoppinsTextStyles
+                                                      .bodyText1,
+                                                ),
+                                              ),
                                             );
                                           },
                                         ),
-                                        Spacer(),
                                       ],
                                     ),
                                   ),
@@ -210,33 +235,42 @@ class CommodityList extends ConsumerWidget {
                                     ),
                                     child: Row(
                                       children: [
-                                        Spacer(),
-                                        RichText(
-                                            text: TextSpan(children: [
-                                          TextSpan(
-                                              text: "TEN TOLA",
-                                              style: CustomPoppinsTextStyles
-                                                  .bodyText1),
-                                          // TextSpan(
-                                          //     text: commodities.purity,
-                                          //     style: GoogleFonts.poppins(
-                                          //       // fontFamily: marine,
-                                          //         color: appTheme.black900,
-                                          //         fontWeight: FontWeight.w500,
-                                          //         fontSize: 10.fSize))
-                                        ])),
+                                        SizedBox(
+                                          width: SizeUtils.width / 4,
+                                          child: Center(
+                                            child: RichText(
+                                                text: TextSpan(children: [
+                                              TextSpan(
+                                                  text: "TEN TOLA",
+                                                  style: CustomPoppinsTextStyles
+                                                      .bodyText1),
+                                              // TextSpan(
+                                              //     text: commodities.purity,
+                                              //     style: GoogleFonts.poppins(
+                                              //       // fontFamily: marine,
+                                              //         color: appTheme.black900,
+                                              //         fontWeight: FontWeight.w500,
+                                              //         fontSize: 10.fSize))
+                                            ])),
+                                          ),
+                                        ),
                                         // Text(
                                         //   commodities.metal + commodities.purity,
                                         //   style: CustomPoppinsTextStyles.bodyText1,
                                         // ),
-                                        Spacer(),
-                                        Text(
-                                          commodities.unit.toString() +
-                                              commodities.weight,
-                                          style:
-                                              CustomPoppinsTextStyles.bodyText1,
+
+                                        SizedBox(
+                                          width: SizeUtils.width / 5,
+                                          child: Center(
+                                            child: Text(
+                                              commodities.unit.toString() +
+                                                  commodities.weight,
+                                              style: CustomPoppinsTextStyles
+                                                  .bodyText1,
+                                            ),
+                                          ),
                                         ),
-                                        Spacer(),
+
                                         // VerticalDivider(
                                         //   color: appTheme.gray700,
                                         // ),
@@ -262,14 +296,19 @@ class CommodityList extends ConsumerWidget {
                                                         commodities.purity
                                                             .toString()
                                                             .length));
-                                            return Text(
-                                              rateNow.toStringAsFixed(0),
-                                              style: CustomPoppinsTextStyles
-                                                  .bodyText1,
+                                            return SizedBox(
+                                              width: SizeUtils.width / 4,
+                                              child: Center(
+                                                child: Text(
+                                                  rateNow.toStringAsFixed(0),
+                                                  style: CustomPoppinsTextStyles
+                                                      .bodyText1,
+                                                ),
+                                              ),
                                             );
                                           },
                                         ),
-                                        Spacer(),
+
                                         Consumer(
                                           builder: (context, refSell, child) {
                                             final askNow =
@@ -292,14 +331,18 @@ class CommodityList extends ConsumerWidget {
                                                         commodities.purity
                                                             .toString()
                                                             .length));
-                                            return Text(
-                                              rateNow.toStringAsFixed(0),
-                                              style: CustomPoppinsTextStyles
-                                                  .bodyText1,
+                                            return SizedBox(
+                                              width: SizeUtils.width / 5,
+                                              child: Center(
+                                                child: Text(
+                                                  rateNow.toStringAsFixed(0),
+                                                  style: CustomPoppinsTextStyles
+                                                      .bodyText1,
+                                                ),
+                                              ),
                                             );
                                           },
                                         ),
-                                        Spacer(),
                                       ],
                                     ),
                                   ),
@@ -318,37 +361,38 @@ class CommodityList extends ConsumerWidget {
                                     ),
                                     child: Row(
                                       children: [
-                                        Spacer(),
-                                        RichText(
-                                            text: TextSpan(children: [
-                                          TextSpan(
-                                              text: "GOLD",
-                                              style: CustomPoppinsTextStyles
-                                                  .bodyText1),
-                                          TextSpan(
-                                              text:
-                                                  commodities.purity.toString(),
-                                              style: GoogleFonts.poppins(
-                                                  // fontFamily: marine,
-                                                  color: appTheme.black900,
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 15.fSize))
-                                        ])),
-                                        // Text(
-                                        //   commodities.metal + commodities.purity,
-                                        //   style: CustomPoppinsTextStyles.bodyText1,
-                                        // ),
-                                        Spacer(),
-                                        Text(
-                                          commodities.unit.toString() +
-                                              commodities.weight,
-                                          style:
-                                              CustomPoppinsTextStyles.bodyText1,
+                                        SizedBox(
+                                          width: SizeUtils.width / 4,
+                                          child: Center(
+                                            child: RichText(
+                                                text: TextSpan(children: [
+                                              TextSpan(
+                                                  text: "GOLD",
+                                                  style: CustomPoppinsTextStyles
+                                                      .bodyText1),
+                                              TextSpan(
+                                                  text: commodities.purity
+                                                      .toString(),
+                                                  style: GoogleFonts.poppins(
+                                                      // fontFamily: marine,
+                                                      color: appTheme.black900,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize: 15.fSize))
+                                            ])),
+                                          ),
                                         ),
-                                        Spacer(),
-                                        // VerticalDivider(
-                                        //   color: appTheme.gray700,
-                                        // ),
+                                        SizedBox(
+                                          width: SizeUtils.width / 5,
+                                          child: Center(
+                                            child: Text(
+                                              commodities.unit.toString() +
+                                                  commodities.weight,
+                                              style: CustomPoppinsTextStyles
+                                                  .bodyText1,
+                                            ),
+                                          ),
+                                        ),
                                         Consumer(
                                           builder: (context, refSell, child) {
                                             final askNow =
@@ -371,14 +415,18 @@ class CommodityList extends ConsumerWidget {
                                                         commodities.purity
                                                             .toString()
                                                             .length));
-                                            return Text(
-                                              rateNow.toStringAsFixed(0),
-                                              style: CustomPoppinsTextStyles
-                                                  .bodyText1,
+                                            return SizedBox(
+                                              width: SizeUtils.width / 4,
+                                              child: Center(
+                                                child: Text(
+                                                  rateNow.toStringAsFixed(0),
+                                                  style: CustomPoppinsTextStyles
+                                                      .bodyText1,
+                                                ),
+                                              ),
                                             );
                                           },
                                         ),
-                                        Spacer(),
                                         Consumer(
                                           builder: (context, refSell, child) {
                                             final askNow =
@@ -401,14 +449,18 @@ class CommodityList extends ConsumerWidget {
                                                         commodities.purity
                                                             .toString()
                                                             .length));
-                                            return Text(
-                                              rateNow.toStringAsFixed(0),
-                                              style: CustomPoppinsTextStyles
-                                                  .bodyText1,
+                                            return SizedBox(
+                                              width: SizeUtils.width / 5,
+                                              child: Center(
+                                                child: Text(
+                                                  rateNow.toStringAsFixed(0),
+                                                  style: CustomPoppinsTextStyles
+                                                      .bodyText1,
+                                                ),
+                                              ),
                                             );
                                           },
                                         ),
-                                        Spacer(),
                                       ],
                                     ),
                                   ),
