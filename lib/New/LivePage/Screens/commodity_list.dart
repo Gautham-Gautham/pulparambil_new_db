@@ -7,9 +7,11 @@ import '../Controller/live_controller.dart';
 
 class CommodityList extends ConsumerWidget {
   final double price;
+  final double slverPrice;
   const CommodityList({
     super.key,
     required this.price,
+    required this.slverPrice,
   });
   double getUnitMultiplier(String weight) {
     switch (weight) {
@@ -163,20 +165,22 @@ class CommodityList extends ConsumerWidget {
                                         ),
                                         Consumer(
                                           builder: (context, refSell, child) {
+                                            final cat =
+                                                price + commodities.sellPremium;
                                             final askNow =
-                                                (price / 31.103) * 3.674;
+                                                (cat / 31.103) * 3.674;
                                             final rateNow = askNow *
-                                                double.parse(commodities.unit
-                                                    .toString()) *
-                                                getUnitMultiplier(
-                                                    commodities.weight) *
-                                                (double.parse(commodities.purity
-                                                        .toString()) /
-                                                    Math.pow(
-                                                        10,
-                                                        commodities.purity
-                                                            .toString()
-                                                            .length));
+                                                    (commodities.unit *
+                                                        getUnitMultiplier(
+                                                            commodities
+                                                                .weight)) *
+                                                    (commodities.purity /
+                                                        Math.pow(
+                                                            10,
+                                                            (commodities.purity
+                                                                    .toString())
+                                                                .length)) +
+                                                commodities.sellCharge;
                                             return SizedBox(
                                               width: SizeUtils.width / 4,
                                               child: Center(
@@ -191,20 +195,22 @@ class CommodityList extends ConsumerWidget {
                                         ),
                                         Consumer(
                                           builder: (context, refSell, child) {
+                                            final cat = slverPrice +
+                                                commodities.sellPremium;
                                             final askNow =
-                                                (price / 31.103) * 3.674;
+                                                (cat / 31.103) * 3.674;
                                             final rateNow = askNow *
-                                                double.parse(commodities.unit
-                                                    .toString()) *
-                                                getUnitMultiplier(
-                                                    commodities.weight) *
-                                                (double.parse(commodities.purity
-                                                        .toString()) /
-                                                    Math.pow(
-                                                        10,
-                                                        commodities.purity
-                                                            .toString()
-                                                            .length));
+                                                    (commodities.unit *
+                                                        getUnitMultiplier(
+                                                            commodities
+                                                                .weight)) *
+                                                    (commodities.purity /
+                                                        Math.pow(
+                                                            10,
+                                                            (commodities.purity
+                                                                    .toString())
+                                                                .length)) +
+                                                commodities.sellCharge;
                                             return SizedBox(
                                               width: SizeUtils.width / 5,
                                               child: Center(
@@ -276,26 +282,22 @@ class CommodityList extends ConsumerWidget {
                                         // ),
                                         Consumer(
                                           builder: (context, refSell, child) {
+                                            final cat =
+                                                price + commodities.sellPremium;
                                             final askNow =
-                                                (price / 31.103) * 3.674;
-                                            // print(askNow);
-                                            // print("unit ${commodities.unit}");
-                                            // print(
-                                            //     "Multiplier ${getUnitMultiplier(commodities.weight)}");
-                                            // print(
-                                            //     "Purity${(double.parse(commodities.purity) / Math.pow(10, commodities.purity.length))}");
+                                                (cat / 31.103) * 3.674;
                                             final rateNow = askNow *
-                                                double.parse(commodities.unit
-                                                    .toString()) *
-                                                getUnitMultiplier(
-                                                    commodities.weight) *
-                                                (double.parse(commodities.purity
-                                                        .toString()) /
-                                                    Math.pow(
-                                                        10,
-                                                        commodities.purity
-                                                            .toString()
-                                                            .length));
+                                                    (commodities.unit *
+                                                        getUnitMultiplier(
+                                                            commodities
+                                                                .weight)) *
+                                                    (commodities.purity /
+                                                        Math.pow(
+                                                            10,
+                                                            (commodities.purity
+                                                                    .toString())
+                                                                .length)) +
+                                                commodities.sellCharge;
                                             return SizedBox(
                                               width: SizeUtils.width / 4,
                                               child: Center(
@@ -311,26 +313,28 @@ class CommodityList extends ConsumerWidget {
 
                                         Consumer(
                                           builder: (context, refSell, child) {
-                                            final askNow =
-                                                (price / 31.103) * 3.674;
                                             // print(askNow);
                                             // print("unit ${commodities.unit}");
                                             // print(
                                             //     "Multiplier ${getUnitMultiplier(commodities.weight)}");
                                             // print(
                                             //     "Purity${(double.parse(commodities.purity) / Math.pow(10, commodities.purity.length))}");
+                                            final cat = slverPrice +
+                                                commodities.sellPremium;
+                                            final askNow =
+                                                (cat / 31.103) * 3.674;
                                             final rateNow = askNow *
-                                                double.parse(commodities.unit
-                                                    .toString()) *
-                                                getUnitMultiplier(
-                                                    commodities.weight) *
-                                                (double.parse(commodities.purity
-                                                        .toString()) /
-                                                    Math.pow(
-                                                        10,
-                                                        commodities.purity
-                                                            .toString()
-                                                            .length));
+                                                    (commodities.unit *
+                                                        getUnitMultiplier(
+                                                            commodities
+                                                                .weight)) *
+                                                    (commodities.purity /
+                                                        Math.pow(
+                                                            10,
+                                                            (commodities.purity
+                                                                    .toString())
+                                                                .length)) +
+                                                commodities.sellCharge;
                                             return SizedBox(
                                               width: SizeUtils.width / 5,
                                               child: Center(
@@ -395,26 +399,22 @@ class CommodityList extends ConsumerWidget {
                                         ),
                                         Consumer(
                                           builder: (context, refSell, child) {
+                                            final cat =
+                                                price + commodities.sellPremium;
                                             final askNow =
-                                                (price / 31.103) * 3.674;
-                                            // print(askNow);
-                                            // print("unit ${commodities.unit}");
-                                            // print(
-                                            //     "Multiplier ${getUnitMultiplier(commodities.weight)}");
-                                            // print(
-                                            //     "Purity${(double.parse(commodities.purity) / Math.pow(10, commodities.purity.length))}");
+                                                (cat / 31.103) * 3.674;
                                             final rateNow = askNow *
-                                                double.parse(commodities.unit
-                                                    .toString()) *
-                                                getUnitMultiplier(
-                                                    commodities.weight) *
-                                                (double.parse(commodities.purity
-                                                        .toString()) /
-                                                    Math.pow(
-                                                        10,
-                                                        commodities.purity
-                                                            .toString()
-                                                            .length));
+                                                    (commodities.unit *
+                                                        getUnitMultiplier(
+                                                            commodities
+                                                                .weight)) *
+                                                    (commodities.purity /
+                                                        Math.pow(
+                                                            10,
+                                                            (commodities.purity
+                                                                    .toString())
+                                                                .length)) +
+                                                commodities.sellCharge;
                                             return SizedBox(
                                               width: SizeUtils.width / 4,
                                               child: Center(
@@ -429,26 +429,22 @@ class CommodityList extends ConsumerWidget {
                                         ),
                                         Consumer(
                                           builder: (context, refSell, child) {
+                                            final cat = slverPrice +
+                                                commodities.sellPremium;
                                             final askNow =
-                                                (price / 31.103) * 3.674;
-                                            // print(askNow);
-                                            // print("unit ${commodities.unit}");
-                                            // print(
-                                            //     "Multiplier ${getUnitMultiplier(commodities.weight)}");
-                                            // print(
-                                            //     "Purity${(double.parse(commodities.purity) / Math.pow(10, commodities.purity.length))}");
+                                                (cat / 31.103) * 3.674;
                                             final rateNow = askNow *
-                                                double.parse(commodities.unit
-                                                    .toString()) *
-                                                getUnitMultiplier(
-                                                    commodities.weight) *
-                                                (double.parse(commodities.purity
-                                                        .toString()) /
-                                                    Math.pow(
-                                                        10,
-                                                        commodities.purity
-                                                            .toString()
-                                                            .length));
+                                                    (commodities.unit *
+                                                        getUnitMultiplier(
+                                                            commodities
+                                                                .weight)) *
+                                                    (commodities.purity /
+                                                        Math.pow(
+                                                            10,
+                                                            (commodities.purity
+                                                                    .toString())
+                                                                .length)) +
+                                                commodities.sellCharge;
                                             return SizedBox(
                                               width: SizeUtils.width / 5,
                                               child: Center(

@@ -273,7 +273,7 @@ class _LivePageState extends ConsumerState<LivePage> {
                             ref1.read(goldAskPrice.notifier).update(
                               (state) {
                                 final res = (liveRateData.gold!.bid +
-                                    (spreadNow.goldAskSpread));
+                                    (spreadNow.goldBidSpread));
                                 return res;
                               },
                             );
@@ -318,7 +318,7 @@ class _LivePageState extends ConsumerState<LivePage> {
                                       children: [
                                         ValueDisplayWidget(
                                             value: (liveRateData.gold!.bid +
-                                                (spreadNow.goldAskSpread))),
+                                                (spreadNow.goldBidSpread))),
                                         Row(
                                           children: [
                                             Icon(
@@ -740,7 +740,8 @@ class _LivePageState extends ConsumerState<LivePage> {
             ),
             Consumer(
               builder: (context, ref2, child) => CommodityList(
-                price: ref2.watch(silverAskPrice),
+                price: ref2.watch(goldAskPrice),
+                slverPrice: ref2.watch(silverAskPrice),
               ),
             ),
             Consumer(
