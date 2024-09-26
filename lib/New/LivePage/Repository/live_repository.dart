@@ -199,13 +199,16 @@ class LiveRateNotifier extends StateNotifier<LiveRateModel?> {
     });
 
     _socket?.on('market-data', (data) {
-      // print("Working");
-      if (data != null && data['symbol'] != null) {
+      if (data is Map<String, dynamic> && data['symbol'] is String) {
         marketData[data['symbol']] = data;
-        state = LiveRateModel.fromJson(marketData);
-        // print("Market data updated: ${data['symbol']}");
+        try {
+          state = LiveRateModel.fromJson(marketData);
+        } catch (e) {
+          print("Error parsing market data: $e");
+          // Handle the error appropriately
+        }
       } else {
-        print("Market data is Null");
+        print("Received invalid market data format");
       }
     });
 
