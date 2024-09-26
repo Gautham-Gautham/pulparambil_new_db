@@ -23,6 +23,7 @@ class _NewsScreenState extends ConsumerState<NewsScreen> {
     return SafeArea(
       child: Scaffold(
         body: Container(
+          padding: EdgeInsets.only(left: 16.0.v, right: 16.v),
           height: SizeUtils.height,
           width: SizeUtils.width,
           decoration: const BoxDecoration(
@@ -37,7 +38,7 @@ class _NewsScreenState extends ConsumerState<NewsScreen> {
               children: [
                 Image.asset(
                   ImageConstants.logo,
-                  width: SizeUtils.width * 0.30,
+                  width: 220.h,
                 ),
                 Text(
                   DateFormat('MMM/dd/yyyy-h:mm a').format(DateTime.now()),
@@ -68,37 +69,33 @@ class _NewsScreenState extends ConsumerState<NewsScreen> {
                                   child: ListView.builder(
                                     itemCount: data.news.news.length,
                                     itemBuilder: (context, index) {
-                                      return Padding(
-                                        padding: EdgeInsets.all(8.0.h),
-                                        child: Container(
-                                          // height: 50.v,
-                                          width: SizeUtils.width * 0.93,
-                                          padding: EdgeInsets.all(8.v),
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(15.v),
-                                            color: appTheme.gold,
-                                          ),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              space(),
-                                              Text(
-                                                data.news.news[index].title,
-                                                style: CustomPoppinsTextStyles
-                                                    .bodyText1,
-                                              ),
-                                              space(),
-                                              Text(
-                                                data.news.news[index]
-                                                    .description,
-                                                style: CustomPoppinsTextStyles
-                                                    .bodyTextBlack,
-                                              ),
-                                              space(),
-                                            ],
-                                          ),
+                                      return Container(
+                                        // height: 50.v,
+                                        width: SizeUtils.width * 0.93,
+                                        padding: EdgeInsets.all(8.v),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(15.v),
+                                          color: appTheme.gold,
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            space(),
+                                            Text(
+                                              data.news.news[index].title,
+                                              style: CustomPoppinsTextStyles
+                                                  .bodyText1,
+                                            ),
+                                            space(),
+                                            Text(
+                                              data.news.news[index].description,
+                                              style: CustomPoppinsTextStyles
+                                                  .bodyTextBlack,
+                                            ),
+                                            space(),
+                                          ],
                                         ),
                                       );
                                     },

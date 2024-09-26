@@ -105,6 +105,7 @@ class CommodityList extends ConsumerWidget {
                       ],
                     ),
                   ),
+                  space(h: 10.v),
                   Consumer(
                     builder: (context, ref2, child) {
                       // print("Consumer is rebulding");

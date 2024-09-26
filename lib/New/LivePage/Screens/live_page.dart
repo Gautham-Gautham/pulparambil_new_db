@@ -172,9 +172,9 @@ class _LivePageState extends ConsumerState<LivePage> {
     return Stack(
       children: [
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.only(left: 8.0.v, right: 8.v),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            // mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -223,6 +223,7 @@ class _LivePageState extends ConsumerState<LivePage> {
                   )
                 ],
               ),
+              space(),
               space(),
               Container(
                 height: 55.h,
@@ -296,7 +297,9 @@ class _LivePageState extends ConsumerState<LivePage> {
                           return Column(
                             children: [
                               Container(
-                                color: Colors.black45,
+                                decoration: BoxDecoration(
+                                    color: Colors.black38,
+                                    borderRadius: BorderRadius.circular(10.v)),
                                 width: SizeUtils.width,
                                 height: SizeUtils.height * 0.1,
                                 child: Row(
@@ -331,6 +334,7 @@ class _LivePageState extends ConsumerState<LivePage> {
                                               CupertinoIcons
                                                   .arrowtriangle_down_fill,
                                               color: appTheme.red700,
+                                              size: 20.v,
                                             ),
                                             Text(
                                               "${liveRateData.gold!.low + (spreadNow.goldLowMargin)}",
@@ -356,6 +360,7 @@ class _LivePageState extends ConsumerState<LivePage> {
                                               CupertinoIcons
                                                   .arrowtriangle_up_fill,
                                               color: appTheme.mainGreen,
+                                              size: 20.v,
                                             ),
                                             Text(
                                               "${liveRateData.gold!.high + (spreadNow.goldHighMargin)}",
@@ -371,7 +376,9 @@ class _LivePageState extends ConsumerState<LivePage> {
                               ),
                               space(),
                               Container(
-                                color: Colors.black54,
+                                decoration: BoxDecoration(
+                                    color: Colors.black38,
+                                    borderRadius: BorderRadius.circular(10.v)),
                                 width: SizeUtils.width,
                                 height: SizeUtils.height * 0.1,
                                 child: Row(
@@ -407,6 +414,7 @@ class _LivePageState extends ConsumerState<LivePage> {
                                               CupertinoIcons
                                                   .arrowtriangle_down_fill,
                                               color: appTheme.red700,
+                                              size: 20.v,
                                             ),
                                             Text(
                                               "${liveRateData.silver!.low + (spreadNow.silverLowMargin)}",
@@ -434,6 +442,7 @@ class _LivePageState extends ConsumerState<LivePage> {
                                               CupertinoIcons
                                                   .arrowtriangle_up_fill,
                                               color: appTheme.mainGreen,
+                                              size: 20.v,
                                             ),
                                             Text(
                                               "${liveRateData.silver!.high + (spreadNow.silverHighMargin)}",
@@ -749,12 +758,15 @@ class _LivePageState extends ConsumerState<LivePage> {
                   );
                 },
               ),
-              Consumer(
-                builder: (context, ref2, child) => CommodityList(
-                  price: ref2.watch(goldAskPrice),
-                  slverPrice: ref2.watch(silverAskPrice),
+              Center(
+                child: Consumer(
+                  builder: (context, ref2, child) => CommodityList(
+                    price: ref2.watch(goldAskPrice),
+                    slverPrice: ref2.watch(silverAskPrice),
+                  ),
                 ),
               ),
+              space(),
               Consumer(
                 builder: (context, ref1, child) {
                   return ref1.watch(newsProvider).when(

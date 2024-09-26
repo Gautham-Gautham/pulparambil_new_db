@@ -121,7 +121,7 @@ class _ValueDisplayWidgetSilver1State extends State<ValueDisplayWidgetSilver1> {
       duration: const Duration(milliseconds: 300),
       // color: _containerColor,
       height: 50.v,
-      width: 120.v,
+      width: 100.v,
       decoration: BoxDecoration(
           color: _containerColor,
           // color: godLow == godBid
@@ -261,7 +261,7 @@ class _ValueDisplayWidgetSilver2State extends State<ValueDisplayWidgetSilver2> {
       duration: const Duration(milliseconds: 300),
       // color: _containerColor,
       height: 50.v,
-      width: 120.v,
+      width: 100.v,
       decoration: BoxDecoration(
           color: _containerColor,
           // color: godLow == godBid
@@ -400,7 +400,7 @@ class _ValueDisplayWidgetState extends State<ValueDisplayWidget> {
       duration: const Duration(milliseconds: 300),
       // color: _containerColor,
       height: 50.v,
-      width: 120.v,
+      width: 100.v,
       decoration: BoxDecoration(
           color: _containerColor,
           // color: godLow == godBid
@@ -539,7 +539,7 @@ class _ValueDisplayWidget2State extends State<ValueDisplayWidget2> {
       duration: const Duration(milliseconds: 300),
       // color: _containerColor,
       height: 50.v,
-      width: 120.v,
+      width: 100.v,
       decoration: BoxDecoration(
           color: _containerColor,
           // color: godLow == godBid

@@ -13,7 +13,7 @@
 
 
     <application
-        android:label="PULPARAMBIL"
+        android:label="Pulparambil"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
