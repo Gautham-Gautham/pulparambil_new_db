@@ -870,7 +870,7 @@ packages:
     source: hosted
     version: "2.0.3+1"
   socket_io_common:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: socket_io_common
       sha256: "2ab92f8ff3ebbd4b353bf4a98bee45cc157e3255464b2f90f66e09c4472047eb"

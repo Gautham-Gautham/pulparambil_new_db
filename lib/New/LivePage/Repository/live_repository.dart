@@ -199,10 +199,13 @@ class LiveRateNotifier extends StateNotifier<LiveRateModel?> {
     });
 
     _socket?.on('market-data', (data) {
+      print("Working");
       if (data != null && data['symbol'] != null) {
         marketData[data['symbol']] = data;
         state = LiveRateModel.fromJson(marketData);
-        // print("Market data updated: ${data['symbol']}");
+        print("Market data updated: ${data['symbol']}");
+      } else {
+        print("Market data is Null");
       }
     });
 
@@ -242,7 +245,9 @@ class LiveRateNotifier extends StateNotifier<LiveRateModel?> {
 
   void _requestMarketData(List<String> symbols) {
     if (_isConnected) {
-      _socket?.emit('request-data', ["GOLD, SILVER"]);
+      print("Socket Connected");
+      print(symbols);
+      _socket?.emit('request-data', [symbols]);
     }
   }
 

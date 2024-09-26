@@ -19,6 +19,7 @@ import '../Controller/live_controller.dart';
 import 'dart:math' as Math;
 
 import '../Repository/live_repository.dart';
+import '../Repository/newTest.dart';
 import 'commodity_list.dart';
 import 'live_rate_widget.dart';
 
