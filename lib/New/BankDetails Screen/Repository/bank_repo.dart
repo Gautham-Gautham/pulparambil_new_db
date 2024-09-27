@@ -47,6 +47,8 @@ class BankRepo {
         options: Options(headers: FirebaseConstants.headers, method: "GET"),
       );
       if (responce.statusCode == 200) {
+        print("###Status Cose 200###");
+        print(responce.data);
         final spotRateModel = BankDetailsModel.fromMap(responce.data);
         return right(spotRateModel);
       } else {

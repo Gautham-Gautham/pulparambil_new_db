@@ -113,20 +113,19 @@ class _DetailsState extends ConsumerState<Details> {
                           data: (data) {
                             if (data != null) {
                               print("data Null alla");
-                              print(data.commodities.bankDetails);
-                              if (data.commodities.bankDetails.isNotEmpty) {
+                              print(data.bankInfo.bankDetails);
+                              if (data.bankInfo.bankDetails.isNotEmpty) {
                                 return Expanded(
                                   flex: 0,
                                   child: ListView.builder(
                                     shrinkWrap: true,
                                     physics:
                                         const NeverScrollableScrollPhysics(),
-                                    itemCount:
-                                        data.commodities.bankDetails.length,
+                                    itemCount: data.bankInfo.bankDetails.length,
                                     itemBuilder: (context, index) {
                                       final bank =
-                                          data.commodities.bankDetails[index];
-                                      _acName.text = "";
+                                          data.bankInfo.bankDetails[index];
+                                      _acName.text = bank.accountNumber;
                                       _holderName.text = bank.holderName ?? "";
                                       _iban.text = bank.iban ?? "";
                                       _ifsc.text = bank.ifsc ?? "";
