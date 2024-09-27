@@ -118,7 +118,7 @@ class _ProfileScreen2State extends ConsumerState<ProfileScreen2> {
           children: [
             CustomImageView(
               imagePath: ImageConstants.logo,
-              width: 90.h,
+              width: 190.h,
             ),
             space(),
             Text(
