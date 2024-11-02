@@ -76,47 +76,6 @@ class _LivePageState extends ConsumerState<LivePage> {
     super.dispose();
   }
 
-  DateTime convertToTimeZone(DateTime dateTime, String timeZone) {
-    final location = tz.getLocation(timeZone);
-    final tz.TZDateTime tzDateTime = tz.TZDateTime.from(dateTime, location);
-    return tzDateTime;
-  }
-
-  String ukTimeString = "";
-  String bdTimeString = "";
-  String inTimeString = "";
-  String uaeTimeString = "";
-  void convertTimes(Timer timer) {
-    // Example timezones
-    const String ukTimeZone = 'America/New_York';
-    const String bdTimeZone = 'Asia/Dhaka';
-    const String currentTimeZone = 'Asia/Kolkata';
-    const String uaeTimeZone = 'Asia/Dubai';
-
-    // Current time in your local timezone
-    DateTime now = DateTime.now();
-
-    // Convert to UK and Bangladesh time
-    DateTime ukTime = convertToTimeZone(now, ukTimeZone);
-    DateTime bdTime = convertToTimeZone(now, bdTimeZone);
-    DateTime localTime = convertToTimeZone(now, currentTimeZone);
-    DateTime uaeTime = convertToTimeZone(now, uaeTimeZone);
-    // Format the time as needed
-    ukTimeString = DateFormat('h:mm:ss a\nEEEE').format(ukTime);
-    bdTimeString = DateFormat('h:mm:ss a\nEEEE').format(bdTime);
-    inTimeString = DateFormat('h:mm:ss a\nEEEE').format(localTime);
-    uaeTimeString = DateFormat('h:mm:ss a\nEEEE').format(uaeTime);
-    ref.read(bdTimeProvider.notifier).update(
-          (state) => bdTimeString,
-        );
-    ref.read(usTimeProvider.notifier).update(
-          (state) => ukTimeString,
-        );
-    ref.read(uaeTimeProvider.notifier).update(
-          (state) => uaeTimeString,
-        );
-  }
-
   String getMarketStatus() {
     DateTime now = DateTime.now();
     int currentDay = now.weekday;
@@ -172,7 +131,7 @@ class _LivePageState extends ConsumerState<LivePage> {
     return Stack(
       children: [
         Padding(
-          padding: EdgeInsets.only(left: 8.0.v, right: 8.v),
+          padding: EdgeInsets.only(left: 18.0.v, right: 18.v),
           child: SingleChildScrollView(
             child: Column(
               // mainAxisAlignment: MainAxisAlignment.center,
@@ -300,11 +259,13 @@ class _LivePageState extends ConsumerState<LivePage> {
                                 Container(
                                   decoration: BoxDecoration(
                                       color: Colors.black38,
-                                      borderRadius: BorderRadius.circular(10.v)),
+                                      borderRadius:
+                                          BorderRadius.circular(10.v)),
                                   width: SizeUtils.width,
                                   height: SizeUtils.height * 0.1,
                                   child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
                                     children: [
@@ -379,11 +340,13 @@ class _LivePageState extends ConsumerState<LivePage> {
                                 Container(
                                   decoration: BoxDecoration(
                                       color: Colors.black38,
-                                      borderRadius: BorderRadius.circular(10.v)),
+                                      borderRadius:
+                                          BorderRadius.circular(10.v)),
                                   width: SizeUtils.width,
                                   height: SizeUtils.height * 0.1,
                                   child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
                                     children: [
@@ -418,7 +381,10 @@ class _LivePageState extends ConsumerState<LivePage> {
                                                 size: 20.v,
                                               ),
                                               Text(
-                                                "${liveRateData.silver!.low + (spreadNow.silverLowMargin)}",
+                                                (liveRateData.silver!.low +
+                                                        (spreadNow
+                                                            .silverLowMargin))
+                                                    .toStringAsFixed(2),
                                                 style: CustomPoppinsTextStyles
                                                     .bodyTextSemiBold,
                                               )
@@ -446,7 +412,10 @@ class _LivePageState extends ConsumerState<LivePage> {
                                                 size: 20.v,
                                               ),
                                               Text(
-                                                "${liveRateData.silver!.high + (spreadNow.silverHighMargin)}",
+                                                (liveRateData.silver!.high +
+                                                        (spreadNow
+                                                            .silverHighMargin))
+                                                    .toStringAsFixed(2),
                                                 style: CustomPoppinsTextStyles
                                                     .bodyTextSemiBold,
                                               )
@@ -558,7 +527,8 @@ class _LivePageState extends ConsumerState<LivePage> {
                                         ])),
                                         Column(
                                           children: [
-                                            ValueDisplayWidgetSilver1(value: 0.0),
+                                            ValueDisplayWidgetSilver1(
+                                                value: 0.0),
                                             Row(
                                               children: [
                                                 Icon(
@@ -577,7 +547,8 @@ class _LivePageState extends ConsumerState<LivePage> {
                                         ),
                                         Column(
                                           children: [
-                                            ValueDisplayWidgetSilver2(value: 0.0),
+                                            ValueDisplayWidgetSilver2(
+                                                value: 0.0),
                                             Row(
                                               children: [
                                                 Icon(
@@ -611,7 +582,8 @@ class _LivePageState extends ConsumerState<LivePage> {
                                   width: SizeUtils.width,
                                   height: SizeUtils.height * 0.1,
                                   child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
                                     children: [
@@ -678,7 +650,8 @@ class _LivePageState extends ConsumerState<LivePage> {
                                   width: SizeUtils.width,
                                   height: SizeUtils.height * 0.1,
                                   child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
                                     children: [
@@ -775,12 +748,12 @@ class _LivePageState extends ConsumerState<LivePage> {
                             if (data123 != null) {
                               return AutoScrollText(
                                 delayBefore: const Duration(seconds: 1),
-                                "${data123.news.news[0].title}                             ",
+                                "${data123.news.news[0].title}    ${data123.news.news[0].title}",
                                 style: CustomPoppinsTextStyles.bodyText,
                               );
                             } else {
                               return Text(
-                                "NO News",
+                                "PULPARAMBIL GOLD & DIAMONDS    PULPARAMBIL GOLD & DIAMONDS   PULPARAMBIL GOLD & DIAMONDS",
                                 style: CustomPoppinsTextStyles.bodyText,
                               );
                             }
@@ -801,7 +774,7 @@ class _LivePageState extends ConsumerState<LivePage> {
         if (ref.watch(bannerBool))
           Positioned(
             top: 15.v,
-            right: 50.h,
+            right: 90.h,
             child: Transform.rotate(
               angle: -Math.pi / 4,
               child: Consumer(
