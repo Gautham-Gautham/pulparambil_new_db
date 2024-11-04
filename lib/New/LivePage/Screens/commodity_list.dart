@@ -117,6 +117,7 @@ class CommodityList extends ConsumerWidget {
                             itemBuilder: (context, index) {
                               // print(commodity[index].toMap());
                               final commodities = commodity[index];
+                              print(commodities.buyPremium);
                               if (commodities.weight == "GM") {
                                 return Padding(
                                   padding: EdgeInsets.only(
@@ -167,7 +168,7 @@ class CommodityList extends ConsumerWidget {
                                         Consumer(
                                           builder: (context, refSell, child) {
                                             final cat =
-                                                price + commodities.sellPremium;
+                                                price + commodities.buyPremium;
                                             final askNow =
                                                 (cat / 31.103) * 3.674;
                                             final rateNow = askNow *
@@ -181,7 +182,7 @@ class CommodityList extends ConsumerWidget {
                                                             (commodities.purity
                                                                     .toString())
                                                                 .length)) +
-                                                commodities.sellCharge;
+                                                commodities.buyCharge;
                                             return SizedBox(
                                               width: SizeUtils.width / 4,
                                               child: Center(
@@ -284,7 +285,7 @@ class CommodityList extends ConsumerWidget {
                                         Consumer(
                                           builder: (context, refSell, child) {
                                             final cat =
-                                                price + commodities.sellPremium;
+                                                price + commodities.buyPremium;
                                             final askNow =
                                                 (cat / 31.103) * 3.674;
                                             final rateNow = askNow *
@@ -298,7 +299,7 @@ class CommodityList extends ConsumerWidget {
                                                             (commodities.purity
                                                                     .toString())
                                                                 .length)) +
-                                                commodities.sellCharge;
+                                                commodities.buyCharge;
                                             return SizedBox(
                                               width: SizeUtils.width / 4,
                                               child: Center(
@@ -401,7 +402,7 @@ class CommodityList extends ConsumerWidget {
                                         Consumer(
                                           builder: (context, refSell, child) {
                                             final cat =
-                                                price + commodities.sellPremium;
+                                                price + commodities.buyPremium;
                                             final askNow =
                                                 (cat / 31.103) * 3.674;
                                             final rateNow = askNow *
@@ -415,7 +416,7 @@ class CommodityList extends ConsumerWidget {
                                                             (commodities.purity
                                                                     .toString())
                                                                 .length)) +
-                                                commodities.sellCharge;
+                                                commodities.buyCharge;
                                             return SizedBox(
                                               width: SizeUtils.width / 4,
                                               child: Center(
