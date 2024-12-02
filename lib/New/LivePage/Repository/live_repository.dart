@@ -124,12 +124,8 @@ import '../../../Models/liverate_model.dart';
 // });
 class LiveRateNotifier extends StateNotifier<LiveRateModel?> {
   IO.Socket? _socket;
-  Map<String, dynamic> marketData = {};
-  bool _isConnected = false;
-  Timer? _reconnectTimer;
-  int _reconnectAttempts = 0;
-  final int _maxReconnectAttempts = 5;
-  final Duration _reconnectInterval = const Duration(seconds: 1);
+  Map marketData = {};
+  final String link = 'https://capital-server-9ebj.onrender.com';
 
   LiveRateNotifier() : super(null) {
     fetchServerLink().then(
@@ -138,9 +134,6 @@ class LiveRateNotifier extends StateNotifier<LiveRateModel?> {
       },
     );
   }
-
-  // final link = 'https://capital-server-9ebj.onrender.com';
-  // final commodityArray = ['GOLD', 'SILVER'];
 
   Future<List<String>> fetchCommodityArray() async {
     const id = "IfiuH/ko+rh/gekRvY4Va0s+aGYuGJEAOkbJbChhcqo=";
@@ -182,24 +175,25 @@ class LiveRateNotifier extends StateNotifier<LiveRateModel?> {
   }
 
   Future<void> initializeSocketConnection({required String link}) async {
-    _socket = IO.io(link, <String, dynamic>{
+    _socket = IO.io(link, {
       'transports': ['websocket'],
+      'autoConnect': false,
       'query': {
-        'secret': 'aurify@123', // Secret key for authentication
+        'secret': 'aurify@123',
       },
-      'reconnection': false, // We'll handle reconnection manually
     });
 
     _socket?.onConnect((_) async {
       print('Connected to WebSocket server');
-      _isConnected = true;
-      _reconnectAttempts = 0;
       List<String> commodityArray = await fetchCommodityArray();
+
       _requestMarketData(commodityArray);
     });
 
     _socket?.on('market-data', (data) {
+      // print(data.runtimeType);
       if (data is Map<String, dynamic> && data['symbol'] is String) {
+        // print(data);
         marketData[data['symbol']] = data;
         try {
           state = LiveRateModel.fromJson(marketData);
@@ -212,63 +206,31 @@ class LiveRateNotifier extends StateNotifier<LiveRateModel?> {
       }
     });
 
-    _socket?.onConnectError((data) {
-      print('Connection Error: $data');
-      _handleDisconnection();
-    });
+    _socket?.onConnectError((data) => print('Connection Error: $data'));
+    _socket?.onDisconnect((_) => print('Disconnected from WebSocket server'));
 
-    _socket?.onDisconnect((_) {
-      print('Disconnected from WebSocket server');
-      _handleDisconnection();
-    });
-
-    _socket?.connect();
-  }
-
-  void _handleDisconnection() {
-    _isConnected = false;
-    if (_reconnectAttempts < _maxReconnectAttempts) {
-      _scheduleReconnect();
-    } else {
-      print('Max reconnection attempts reached');
-    }
-  }
-
-  void _scheduleReconnect() {
-    _reconnectTimer?.cancel();
-    _reconnectTimer = Timer(_reconnectInterval, () {
-      if (!_isConnected) {
-        _reconnectAttempts++;
-        print(
-            'Attempting to reconnect... (Attempt $_reconnectAttempts/$_maxReconnectAttempts)');
-        _socket?.connect();
-      }
-    });
+    await _socket?.connect();
   }
 
   void _requestMarketData(List<String> symbols) {
-    if (_isConnected) {
-      print("Socket Connected");
-      print(symbols);
-      _socket?.emit('request-data', [symbols]);
-    }
-  }
-
-  Future<void> refreshData() async {
-    if (_isConnected) {
-      List<String> commodityArray = await fetchCommodityArray();
-      _requestMarketData(commodityArray);
-    } else {
-      print('Not connected. Attempting to reconnect...');
-      _socket?.connect();
-    }
+    // print("HERE IS THE SYMBOLS");
+    // print(symbols);
+    // print(symbols);
+    // print(symbols);
+    // print(symbols);
+    // print(symbols);
+    // print(symbols);
+    // print(symbols);
+    // print(symbols);
+    // print(symbols);
+    // print(symbols);
+    // print(symbols);
+    _socket?.emit('request-data', [symbols]);
   }
 
   @override
   void dispose() {
-    _reconnectTimer?.cancel();
     _socket?.disconnect();
-    _socket?.dispose();
     super.dispose();
   }
 }

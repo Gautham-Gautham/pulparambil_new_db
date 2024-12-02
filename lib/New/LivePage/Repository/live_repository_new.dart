@@ -72,6 +72,7 @@ class LiveRepositoryNew {
         options: Options(headers: FirebaseConstants.headers, method: "GET"),
       );
       if (responce.statusCode == 200) {
+        print(responce.data["info"]["commodities"][0]);
         final spotRateModel = SpotRateModel.fromMap(responce.data);
         return right(spotRateModel);
       } else {

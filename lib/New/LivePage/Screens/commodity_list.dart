@@ -117,7 +117,6 @@ class CommodityList extends ConsumerWidget {
                             itemBuilder: (context, index) {
                               // print(commodity[index].toMap());
                               final commodities = commodity[index];
-                              print(commodities.buyPremium);
                               if (commodities.weight == "GM") {
                                 return Padding(
                                   padding: EdgeInsets.only(

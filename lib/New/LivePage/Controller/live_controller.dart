@@ -49,7 +49,7 @@ class LiveController {
     final res = await _liveRepositoryNew.getSpotRate();
     res.fold(
       (l) {
-        print("###ERROR###");
+        print("Controller###ERROR###");
         print(l.message);
       },
       (r) {

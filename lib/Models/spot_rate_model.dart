@@ -187,10 +187,10 @@ class Commodity {
   final int purity;
   final int unit;
   final String weight;
-  final int buyPremium;
-  final int sellPremium;
-  final int buyCharge;
-  final int sellCharge;
+  final double buyPremium;
+  final double sellPremium;
+  final double buyCharge;
+  final double sellCharge;
   final String id;
 
   Commodity({
@@ -210,10 +210,10 @@ class Commodity {
     int? purity,
     int? unit,
     String? weight,
-    int? buyPremium,
-    int? sellPremium,
-    int? buyCharge,
-    int? sellCharge,
+    double? buyPremium,
+    double? sellPremium,
+    double? buyCharge,
+    double? sellCharge,
     String? id,
   }) =>
       Commodity(
@@ -233,10 +233,10 @@ class Commodity {
         purity: json["purity"],
         unit: json["unit"],
         weight: json["weight"],
-        buyPremium: json["buyPremium"],
-        sellPremium: json["sellPremium"],
-        buyCharge: json["buyCharge"],
-        sellCharge: json["sellCharge"],
+        buyPremium: json["buyPremium"].toDouble(),
+        sellPremium: json["sellPremium"].toDouble(),
+        buyCharge: json["buyCharge"].toDouble(),
+        sellCharge: json["sellCharge"].toDouble(),
         id: json["_id"],
       );
 
